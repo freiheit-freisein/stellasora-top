@@ -65,9 +65,9 @@
 
   /* ファーストビュー */
   .hero { padding: 48px 0 8px; }
-  .eyebrow { margin: 0 0 6px; font-family: var(--font-en); font-size: 20px; letter-spacing: .14em; color: var(--link); }
-  .hero h1 { margin: 0; font-weight: 900; font-style: italic; font-size: clamp(34px, 6vw, 58px); line-height: 1.2; color: var(--indigo); }
-  .hero .lead { margin: 18px 0 0; font-size: 16px; max-width: 640px; }
+  .hero h1 { margin: 0; font-weight: 900; font-style: italic; font-size: clamp(30px, 4.4vw, 42px); line-height: 1.3; color: var(--indigo); }
+  .hero h1 .en { font-family: var(--font-en); font-style: normal; font-weight: 400; font-size: .62em; letter-spacing: .12em; color: var(--link); margin-left: .3em; white-space: nowrap; }
+  .hero .lead { margin: 10px 0 0; font-size: 16px; max-width: 640px; }
 
   /* ツールごとの区切り */
   .sec { padding: 28px 0 36px; }
@@ -92,16 +92,13 @@
   .btn.line-indigo:hover { background: var(--surface-soft); color: var(--indigo); }
 
   /* 使い方の場面 */
-  .use { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px; align-items: center;
-    background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px; margin-bottom: 20px; }
-  .use:nth-child(even) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
-  .use:nth-child(even) .use-text { order: 2; }
+  .use { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px; margin-bottom: 20px; }
   .use h3 { margin: 0 0 8px; font-size: 20px; line-height: 1.5; color: var(--indigo); }
-  .use p { margin: 0 0 14px; }
-  .use p:last-child { margin-bottom: 0; }
+  .use p { margin: 0 0 16px; max-width: 860px; }
+  .use .shot { margin: 0 0 16px; }
+  .use .shot:last-child { margin-bottom: 0; }
   .shot { margin: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-strong); background: var(--surface-soft); box-shadow: 0 6px 20px rgba(30, 34, 80, .08); }
   .shot img { display: block; width: 100%; height: auto; }
-  .shot.narrow { max-width: 460px; justify-self: center; width: 100%; }
 
   /* フッター */
   .site-footer { margin-top: 32px; background: var(--surface); border-top: 1px solid var(--border); padding: 28px 0 36px; font-size: 13px; color: var(--muted); }
@@ -112,8 +109,7 @@
   @media (max-width: 860px) {
     .tools { grid-template-columns: 1fr; }
     .hero { padding: 32px 0 4px; }
-    .use, .use:nth-child(even) { grid-template-columns: 1fr; padding: 20px; gap: 16px; }
-    .use:nth-child(even) .use-text { order: 0; }
+    .use { padding: 20px; }
   }
   @media (max-width: 520px) {
     .logo-en { font-size: 21px; }
@@ -141,9 +137,8 @@
 <main>
     <section class="hero">
       <div class="wrap">
-        <p class="eyebrow">FOR STELLA SORA</p>
-        <h1>巡遊者ノート</h1>
-        <p class="lead">ステラソラの非公式ツールを置いています。</p>
+        <h1>巡遊者ノート <span class="en">FOR STELLA SORA</span></h1>
+        <p class="lead">自作のステラソラの非公式ツールを置いてます！</p>
       </div>
     </section>
 
@@ -152,13 +147,13 @@
         <div class="tools">
           <div class="tool-card calc">
             <h2>巡遊者の計算ノート</h2>
-            <p class="sub">ダメージを計算する</p>
-            <div class="meta"><span class="chip beta">β版</span><span class="chip">PC向け（スマホは準備中）</span></div>
+            <p class="sub">色々な要素を入力してダメージ計算できます</p>
+            <div class="meta"><span class="chip beta">β版</span><span class="chip">PC向け（スマホは仮対応）</span></div>
             <a class="btn sm line-indigo" href="#calc">説明を見る</a>
           </div>
           <div class="tool-card preset">
             <h2>巡遊者の素質ノート</h2>
-            <p class="sub">素質ビルドを探す・共有する</p>
+            <p class="sub">プリセットコードの読み込み・作成・共有ができます</p>
             <div class="meta"><span class="chip">スマホ・PC</span><span class="chip">日本語・English</span></div>
             <a class="btn sm" href="#preset">説明を見る</a>
           </div>
@@ -171,22 +166,19 @@
         <div class="note-head">
           <h2 id="calc-h">計算ノート</h2>
         </div>
-        <p class="note-lead">巡遊者・素質・徽章・ロスレコ・敵まで入れて、ダメージを計算します。数値はゲームの画面と実測に合わせていますが、まだ合っていないところもあります。</p>
+        <p class="note-lead">巡遊者・素質・徽章・ロスレコ・敵などのビルド要素を詰め込んで、ダメージ計算を行うツールです。</p>
         <div class="uses">
           <article class="use">
-            <div class="use-text">
-              <h3>素質や徽章で、ダメージがどれだけ変わるか</h3>
-              <p>3人の編成で、通常攻撃・スキル・必殺技・印のダメージを出します。素質のLvを1つ上げたら何%伸びるか、徽章を外したら何%減るかも並べて見られます。</p>
-            </div>
-            <figure class="shot narrow"><img src="img/use-calc.webp" width="452" height="420" loading="lazy" alt="計算ノートのビルド確認。素質と徽章の項目ごとに、Lvを1つ下げたときのダメージの増減が、増減の大きい順に並んでいる"></figure>
+            <h3>ビルドを作ってシミュレートする</h3>
+            <p>編成単位で何を上げたら、下げたらどのくらいダメージが変わるのかを計算できるので、どの要素を優先して上げると強くなれるのかなどの予想が出来るようになります。ビルドを名前をつけてブラウザに保存できるので、いろんなビルドを組み立てて必要な時に確認できます。</p>
+            <figure class="shot" style="max-width:902px"><img src="img/use-calc.webp" width="902" height="332" loading="lazy" alt="計算ノートのビルド確認。素質と徽章の項目ごとに、Lvを下げたり外したりしたときのダメージの増減が、大きい順に並んでいる"></figure>
+            <a class="btn sm indigo" href="https://sim.stella-tool.com/sim">ビルドを作ってみる</a>
           </article>
 
           <article class="use">
-            <div class="use-text">
-              <h3>ビルドをURLで渡す</h3>
-              <p>入力した状態を、短いURLにできます。相談したい相手に送れば、同じ画面から見てもらえます。ゲームの素質プリセットのコードも出せます。</p>
-            </div>
-            <figure class="shot"><img src="img/use-share.webp" width="744" height="228" loading="lazy" alt="計算ノートの共有。URLを作るボタン、Xで共有するボタン、共有URLと共有コードの欄がある"></figure>
+            <h3>ビルドを共有する</h3>
+            <p>入力したビルドを短縮URLにする機能があるので、入力したデータを他の人に渡したり、もらったりすることができます。状態を伝えることができれば的確なアドバイスをもらいやすいかも。ゲーム内の素質プリセットコードも発行できます。</p>
+            <figure class="shot" style="max-width:744px"><img src="img/use-share.webp" width="744" height="228" loading="lazy" alt="計算ノートの共有。URLを作るボタン、Xで共有するボタン、共有URLと共有コードの欄がある"></figure>
           </article>
         </div>
       </div>
@@ -197,23 +189,20 @@
         <div class="note-head">
           <h2 id="preset-h">素質ノート</h2>
         </div>
-        <p class="note-lead">ゲームの素質プリセットを、共有コードで投稿したり探したりできます。</p>
+        <p class="note-lead">ゲーム内で使われている素質のプリセットを登録したり、探したりできます。</p>
         <div class="uses">
           <article class="use">
-            <div class="use-text">
-              <h3>星ノ塔で集める素質を決める</h3>
-              <p>ほかの人のビルドを、巡遊者や編成から探せます。コードをゲームの「素質プリセット」に入れておくと、星ノ塔で何をあといくつ集めればいいかが出ます。</p>
-            </div>
-            <figure class="shot"><img src="img/use-find.webp" width="887" height="330" loading="lazy" alt="巡遊者の素質ノートの新着ビルド。巡遊者3人のアイコン、総素質Lv、ビルドの題名とコメントのカードが並んでいる"></figure>
+            <h3>星ノ塔で集める素質を参考にする</h3>
+            <p>共有コードだけでいいので、さっとやり取りすることができます。<br>コードをコピーしてゲーム内のプリセットインポートから入力するだけで使えて、星ノ塔での探索に役立てることができますよ！</p>
+            <figure class="shot" style="max-width:887px"><img src="img/use-find.webp" width="887" height="330" loading="lazy" alt="巡遊者の素質ノートの新着ビルド。巡遊者3人のアイコン、総素質Lv、ビルドの題名とコメントのカードが並んでいる"></figure>
+            <a class="btn sm fill" href="https://preset.stella-tool.com/">ビルドを見てみる</a>
           </article>
 
           <article class="use">
-            <div class="use-text">
-              <h3>自分のビルドを残す</h3>
-              <p>ゲームで出した共有コードを貼れば、編成と素質Lvを読み取って投稿できます。アカウントの登録はありません。</p>
-              <a class="btn sm" href="https://preset.stella-tool.com/post.html">ビルドを投稿する</a>
-            </div>
+            <h3>自分のビルドを残す</h3>
+            <p>ゲーム内の共有からコピーしたコードを張り付けることで編成と素質レベルを読み取って投稿することができます。アカウント登録も不要でブラウザに保存されるので、お手軽に使うことができます。</p>
             <figure class="shot"><img src="img/use-post.webp" width="1124" height="307" loading="lazy" alt="ビルドを投稿する画面。コードを貼ると、主力と支援2人の巡遊者と素質Lvの合計が読み取られる"></figure>
+            <a class="btn sm fill" href="https://preset.stella-tool.com/post.html">ビルドを投稿する</a>
           </article>
         </div>
       </div>

@@ -84,12 +84,15 @@
   /* ツールのカード */
   .tools { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
   .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; padding: 0 0 22px; }
-  .tool-card .band { position: relative; background: var(--accent); padding: 18px 96px 18px 24px; }
+  .tool-card .band { display: block; text-decoration: none; transition: filter .15s; position: relative; background: var(--accent); padding: 18px 96px 18px 24px; }
   .tool-card.calc .band { background: var(--indigo); }
+  .tool-card .band:hover { filter: brightness(1.08); }
+  .tool-card .band:hover .ic { transform: scale(1.06); }
+  .tool-card .band h2::after { content: "↗"; font-style: normal; font-size: .75em; margin-left: .4em; opacity: .8; }
   .tool-card h2 { margin: 0; font-size: 21px; font-weight: 900; font-style: italic; line-height: 1.4; color: #fff; }
   /* 帯の右下にかかる丸いアイコン */
   .tool-card .ic { position: absolute; right: 22px; bottom: -28px; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center;
-    background: var(--surface); color: var(--accent); border: 3px solid var(--accent); box-shadow: 0 4px 12px rgba(30, 34, 80, .12); }
+    background: var(--surface); color: var(--accent); border: 3px solid var(--accent); box-shadow: 0 4px 12px rgba(30, 34, 80, .12); transition: transform .15s; }
   .tool-card.calc .ic { color: var(--indigo); border-color: var(--indigo); }
   .tool-card .ic svg { width: 30px; height: 30px; }
   .tool-card .sub { margin: 16px 96px 0 24px; color: var(--muted); }
@@ -153,13 +156,13 @@
       <div class="wrap">
         <div class="tools">
           <div class="tool-card calc">
-            <div class="band"><h2>巡遊者の計算ノート</h2><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="8" y="6" width="8" height="3.5" rx="1" fill="currentColor"/><circle cx="9" cy="13" r="1.1" fill="currentColor"/><circle cx="12" cy="13" r="1.1" fill="currentColor"/><circle cx="15" cy="13" r="1.1" fill="currentColor"/><circle cx="9" cy="17" r="1.1" fill="currentColor"/><circle cx="12" cy="17" r="1.1" fill="currentColor"/><circle cx="15" cy="17" r="1.1" fill="currentColor"/></svg></span></div>
+            <a class="band" href="https://sim.stella-tool.com/sim"><h2>巡遊者の計算ノート</h2><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="8" y="6" width="8" height="3.5" rx="1" fill="currentColor"/><circle cx="9" cy="13" r="1.1" fill="currentColor"/><circle cx="12" cy="13" r="1.1" fill="currentColor"/><circle cx="15" cy="13" r="1.1" fill="currentColor"/><circle cx="9" cy="17" r="1.1" fill="currentColor"/><circle cx="12" cy="17" r="1.1" fill="currentColor"/><circle cx="15" cy="17" r="1.1" fill="currentColor"/></svg></span></a>
             <p class="sub">色々な要素を入力してダメージ計算ができます</p>
             <div class="meta"><span class="chip beta">β版</span><span class="chip">PC向け（スマホは仮対応）</span></div>
             <a class="btn sm line-indigo" href="#calc">説明を見る</a>
           </div>
           <div class="tool-card preset">
-            <div class="band"><h2>巡遊者の素質ノート</h2><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h10a2 2 0 0 1 2 2v16l-7-3.5L4 21V5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 6.5c.4 2.3 1.4 3.3 3.7 3.7-2.3.4-3.3 1.4-3.7 3.7-.4-2.3-1.4-3.3-3.7-3.7 2.3-.4 3.3-1.4 3.7-3.7z" fill="currentColor"/></svg></span></div>
+            <a class="band" href="https://preset.stella-tool.com/"><h2>巡遊者の素質ノート</h2><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h10a2 2 0 0 1 2 2v16l-7-3.5L4 21V5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 6.5c.4 2.3 1.4 3.3 3.7 3.7-2.3.4-3.3 1.4-3.7 3.7-.4-2.3-1.4-3.3-3.7-3.7 2.3-.4 3.3-1.4 3.7-3.7z" fill="currentColor"/></svg></span></a>
             <p class="sub">プリセットコードの読込・作成・共有ができます</p>
             <div class="meta"><span class="chip">スマホ・PC</span><span class="chip">日本語・English</span></div>
             <a class="btn sm" href="#preset">説明を見る</a>

@@ -17,6 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="theme.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
@@ -30,6 +31,19 @@
     --tag-bg: #E6F7F8; --tag-text: #05626A;
     --pink: #EDA3B2; --pink-line: #C9637A; --pink-soft: #FBE4E9; --yellow: #F4C84A;
     --font: 'Noto Sans JP', sans-serif; --font-en: 'Bebas Neue', sans-serif;
+    --indigo-fill: #4B5082; --header-bg: rgba(255, 255, 255, .94);
+    color-scheme: light;
+  }
+  /* ダークモード（色は素質ノート・計算ノートと同じ。切り替えは theme.js） */
+  :root[data-theme="dark"] {
+    --bg: #13152B; --grid: #1C1F3B; --surface: #1B1E38; --surface-soft: #24284A;
+    --border: #2F3460; --border-strong: #464C82;
+    --text: #F8F9FF; --indigo: #CDD1F7; --muted: #BCC0E2;
+    --link: #3CCFD5; --link-hover: #7DE2E6;
+    --tag-bg: #0F3940; --tag-text: #7DE2E6;
+    --pink-line: #F08FA6; --pink-soft: #3B2233;
+    --header-bg: rgba(19, 21, 43, .94);
+    color-scheme: dark;
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -45,12 +59,13 @@
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
 
   /* ヘッダー */
-  .site-header { position: sticky; top: 0; z-index: 10; background: rgba(255, 255, 255, .94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
+  .site-header { position: sticky; top: 0; z-index: 10; background: var(--header-bg); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
   .site-header .wrap { display: flex; align-items: center; gap: 10px; padding-top: 12px; padding-bottom: 12px; }
   .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo svg { width: 26px; height: 26px; fill: var(--accent); flex: none; }
   .logo-en { font-family: var(--font-en); font-size: 25px; letter-spacing: .08em; line-height: 1; color: var(--indigo); padding-top: 3px; white-space: nowrap; }
-  .head-nav { margin-left: auto; display: flex; gap: 8px; }
+  .head-nav { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+  .head-nav .tn-theme { color: var(--muted); }
 
   /* ボタン */
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 20px; border-radius: 999px;
@@ -58,7 +73,7 @@
   .btn:hover { background: var(--tag-bg); color: var(--link-hover); }
   .btn.fill { background: var(--accent); color: #fff; }
   .btn.fill:hover { background: #08A9AF; color: #fff; }
-  .btn.indigo { background: var(--indigo); border-color: var(--indigo); color: #fff; }
+  .btn.indigo { background: var(--indigo-fill); border-color: var(--indigo-fill); color: #fff; }
   .btn.indigo:hover { background: #3D4170; color: #fff; }
   .btn.sm { min-height: 36px; padding: 0 14px; font-size: 13px; }
   .btn svg { width: 14px; height: 14px; fill: currentColor; }
@@ -88,7 +103,7 @@
   .tool-card:hover { transform: scale(1.02); box-shadow: 0 10px 28px rgba(30, 34, 80, .12); }
   @media (prefers-reduced-motion: reduce) { .tool-card, .tool-card .ic { transition: none; } .tool-card:hover { transform: none; } }
   .tool-card .band { display: block; text-decoration: none; transition: filter .15s; position: relative; background: var(--accent); padding: 18px 96px 18px 24px; }
-  .tool-card.calc .band { background: var(--indigo); }
+  .tool-card.calc .band { background: var(--indigo-fill); }
   .tool-card .band:hover { filter: brightness(1.08); }
   .tool-card .band:hover .ic { transform: scale(1.06); }
   .tool-card h2 { margin: 0; font-size: 21px; font-weight: 900; font-style: italic; line-height: 1.4; color: #fff; }
@@ -130,6 +145,10 @@
     .note-head h2 { font-size: 22px; }
     .use h3 { font-size: 18px; }
   }
+  /* 切り替えボタンが入ると幅が足りないので、狭い画面ではロゴの英字を隠す（星だけ残す。ページの見出しに名前がある） */
+  @media (max-width: 420px) {
+    .logo-en { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -139,7 +158,7 @@
       <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 1.5C12.8 8 16 11.2 22.5 12 16 12.8 12.8 16 12 22.5 11.2 16 8 12.8 1.5 12 8 11.2 11.2 8 12 1.5z"/></svg>
       <span class="logo-en">TREKKERS’ NOTES</span>
     </a>
-    <nav class="head-nav" aria-label="ツール">
+    <nav class="head-nav" aria-label="ツール" data-theme-switch>
       <a class="btn sm indigo" href="https://sim.stella-tool.com/sim">計算ノート</a>
       <a class="btn sm fill" href="https://preset.stella-tool.com/">素質ノート</a>
     </nav>

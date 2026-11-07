@@ -132,6 +132,10 @@
   .site-footer h2 { margin: 0 0 6px; font-size: 14px; color: var(--indigo); }
   .site-footer p { margin: 0 0 10px; }
   .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 14px; }
+  .sns { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 14px; }
+  .sns a { display: inline-flex; align-items: center; gap: 7px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 13px; font-weight: 700; background: var(--bg, transparent); }
+  .sns a:hover { background: var(--indigo-fill); border-color: var(--indigo-fill); color: #fff; }
+  .sns svg { width: 16px; height: 16px; fill: currentColor; flex: none; }
 
   @media (max-width: 860px) {
     .tools { grid-template-columns: 1fr; }
@@ -245,6 +249,10 @@
     <h2>このサイトについて</h2>
     <p>ステラソラ（Stella Sora）の非公式ファンサイトです。運営会社とは関係ありません。ゲーム内の名称・画像などの権利は、各権利者に帰属します。</p>
     <p>計算ノートの数値は、ゲームの画面・実測・Wiki をもとにしていますが、間違っているところもあると思います。気づいたことがあれば、各ツールの「報告」から教えてもらえると助かります。</p>
+    <div class="sns">
+      <a href="https://discord.gg/YJdYv3uRz6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.099.246.198.373.292a.077.077 0 0 1-.007.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg>Discord</a>
+      <a href="https://x.com/elel_stella" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932zM17.61 20.644h2.039L6.486 3.24H4.298z"/></svg>@elel_stella</a>
+    </div>
     <p>サーバー代などの応援は、<a href="https://ofuse.me/stella_tool" target="_blank" rel="noopener">OFUSE</a> から受け付けています（海外からは <a href="https://ko-fi.com/elstella" target="_blank" rel="noopener">Ko-fi</a>）。</p>
     <div class="foot-links">
       <a href="https://preset.stella-tool.com/about.html">利用規約・プライバシー</a>
